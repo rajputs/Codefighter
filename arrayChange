@@ -1,18 +1,15 @@
 def arrayChange(inputArray):
+    if len(inputArray)>100000 or len(inputArray)<3:
+        return None
     chances=0
     storage={'prev':-100001}
-    #print copiedarray
     for index,element in enumerate(inputArray):
-        
-        if inputArray[index]-storage['prev']>0:
-            storage['prev'] = element
-            continue
-        else:
-            while (inputArray[index]-storage['prev']<=0):
-                value=inputArray[index]+1
-                chances+=1
-                inputArray[index]=value
-            #print inputArray
-            storage['prev'] = inputArray[index]
+        st=storage['prev']
+        if element<-100000 or element>100000:
+            return None
+        while (inputArray[index]-st<=0):
+            value=inputArray[index]+1
+            chances+=1
+            inputArray[index]=value
+        storage['prev'] = inputArray[index]
     return chances
-        
