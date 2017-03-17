@@ -1,50 +1,36 @@
 
- def reverse(s):
-  brackdict=dict()
-  bracketstartcount=0
-  bracketclosecount=0
+def reverseParentheses(s):
+  dictstore=dict()
+  bstring=''
+  if s.find(')')==-1:
+    return s
+  #print(s)
   for index,c in enumerate(s):
     #print (index)
+    bstring+=c
     if c=='(':
-      bracketstartcount+=1
-      if brackdict.get(bracketstartcount)==None:
-        poslist=list()
-        poslist.append(index)
-        brackdict[bracketstartcount]=poslist
-      else:
-        brackdict[bracketstartcount].append(index)
-      bracketclosecount=bracketstartcount
-    if c==')':
-      if brackdict.get(bracketclosecount)==None:
-        endlist=list()
-        endlist.append(index)
-        brackdict[bracketclosecount]=endlist
-      else:
-        brackdict[bracketclosecount].append(index)
-      bracketclosecount-=1
-    
-  print (brackdict)
-  #() start and cloase position stored in dictonray
-  # now slicing 
-  resultstring=''
-  temp1string=''
-  temp2string=''
-  stpos=0
-  for key in brackdict:
-    temp1string=s[stpos:brackdict[key][0]+1]
-    print("temp1="+temp1string)
-    temp2string=s[brackdict[key][0]+1:brackdict[key][1]]
-    print("temp2="+temp2string)
-    temp3string=s[brackdict[key][1]:]
-    print("temp3="+temp3string)
-    resultstring=temp1string+temp2string[::-1]+temp3string
-    
-    #stpos=brackdict[key][1]+1
-    s=resultstring
-    print('===============')
+      # store this index value
+      if dictstore==None:
+        dictstore=dict()
+      dictstore['sta']=index
+    elif c==')':
+      # store this value
+      if dictstore==None:
+        continue
+      dictstore['sto']=index
+      # slice and reverese
+      rstring=s[dictstore['sta']+1:dictstore['sto']]
+      revstring=rstring[::-1]
+      tstring='('+rstring+')'
+      remainderstring=s[dictstore['sto']+1:]
+      #print (bstring.replace(tstring,revstring)+remainderstring)
+      dictstore=None
+      temps=bstring.replace(tstring,revstring)+remainderstring
+      if temps.find(')')!=-1:
+        return reverseParentheses(temps)
+      return temps
   
-  
-  print (resultstring)
+      
   
     
       
