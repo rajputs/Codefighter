@@ -1,0 +1,18 @@
+def arrayChange(inputArray):
+    chances=0
+    storage={'prev':-100001}
+    #print copiedarray
+    for index,element in enumerate(inputArray):
+        
+        if inputArray[index]-storage['prev']>0:
+            storage['prev'] = element
+            continue
+        else:
+            while (inputArray[index]-storage['prev']<=0):
+                value=inputArray[index]+1
+                chances+=1
+                inputArray[index]=value
+            #print inputArray
+            storage['prev'] = inputArray[index]
+    return chances
+        
