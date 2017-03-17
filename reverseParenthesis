@@ -1,0 +1,58 @@
+
+ def reverse(s):
+  brackdict=dict()
+  bracketstartcount=0
+  bracketclosecount=0
+  for index,c in enumerate(s):
+    #print (index)
+    if c=='(':
+      bracketstartcount+=1
+      if brackdict.get(bracketstartcount)==None:
+        poslist=list()
+        poslist.append(index)
+        brackdict[bracketstartcount]=poslist
+      else:
+        brackdict[bracketstartcount].append(index)
+      bracketclosecount=bracketstartcount
+    if c==')':
+      if brackdict.get(bracketclosecount)==None:
+        endlist=list()
+        endlist.append(index)
+        brackdict[bracketclosecount]=endlist
+      else:
+        brackdict[bracketclosecount].append(index)
+      bracketclosecount-=1
+    
+  print (brackdict)
+  #() start and cloase position stored in dictonray
+  # now slicing 
+  resultstring=''
+  temp1string=''
+  temp2string=''
+  stpos=0
+  for key in brackdict:
+    temp1string=s[stpos:brackdict[key][0]+1]
+    print("temp1="+temp1string)
+    temp2string=s[brackdict[key][0]+1:brackdict[key][1]]
+    print("temp2="+temp2string)
+    temp3string=s[brackdict[key][1]:]
+    print("temp3="+temp3string)
+    resultstring=temp1string+temp2string[::-1]+temp3string
+    
+    #stpos=brackdict[key][1]+1
+    s=resultstring
+    print('===============')
+  
+  
+  print (resultstring)
+  
+    
+      
+      
+    
+
+    
+      
+    
+    
+  
