@@ -1,0 +1,21 @@
+def alternatingSums(a):
+    if len(a)<1 or len(a)>10:
+        return None
+    
+    
+    team1list=list()
+    team2list=list()
+    for index,element in enumerate(a):
+        if index%2==0:
+            team1list.append(element)
+        else:
+            team2list.append(element)
+    flist=list()
+    flist.append(sum(team1list))
+    flist.append(sum(team2list))
+    return flist
+            
+            
+        
+        
+
