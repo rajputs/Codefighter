@@ -1,0 +1,46 @@
+def boxBlur(image):
+    finallist=[]
+    rlist=[]
+    counter=0
+    sum1=0
+    start=0
+    instart=0
+    stop=3
+    loop=True
+    instop=3
+    
+    while(loop):
+        if stop >len(image):
+            loop=False
+            break
+            
+        for i in range(start,stop,1):
+            for j in range(instart,instop,1):
+                sum1+=image[i][j]
+                #print i,j
+        print len(image[i])
+        rlist.append(sum1/9)
+        if instop<len(image[i]):
+            instart+=1
+            instop+=1
+            
+            print rlist
+        else:
+            start+=1
+            stop+=1
+            instart=0
+            instop=3
+            print rlist
+            finallist.append(rlist)
+            rlist=[]
+        sum1=0
+        #print rlist 
+    
+    return finallist
+    
+    
+        
+            
+        
+        
+
