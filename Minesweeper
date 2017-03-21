@@ -1,0 +1,50 @@
+def minesweeper(matrix):
+    lent=len(matrix)
+    validpos=[]
+    for i in range(lent):
+        for j in range(len(matrix[i])):
+            t=i,j
+            if matrix[i][j]==False:
+                matrix[i][j]=0
+            else:
+                matrix[i][j]=100
+            validpos.append(t)
+    for i in range(lent):
+        for j in range(len(matrix[i])):
+            if  matrix[i][j]>=100:
+                pos= findpositions(i,j)
+                #print pos,i,j
+                for (k,l) in pos:
+                    if (k,l) in validpos:
+                        #print k,l
+                        if isinstance(matrix[k][l],int):
+                            matrix[k][l]+=1
+                print matrix
+    for i in range(lent):
+        for k in range(len(matrix[i])):
+            if matrix[i][k]>=100:
+                matrix[i][k]=matrix[i][k]-100
+    return matrix 
+    
+def findpositions(i,j):
+    pos=[]
+    t1=(i-1,j-1)
+    pos.append(t1)
+    t2=(i-1,j)
+    pos.append(t2)
+    t3=(i-1,j+1)
+    pos.append(t3)
+    t4=(i,j-1)
+    pos.append(t4)
+    t5=(i,j+1)
+    pos.append(t5)
+    t6=(i+1,j-1)
+    pos.append(t6)
+    t7=(i+1,j)
+    pos.append(t7)
+    t8=(i+1,j+1)
+    pos.append(t8)
+    return pos
+            
+    
+
