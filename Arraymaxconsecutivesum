@@ -1,0 +1,28 @@
+def arrayMaxConsecutiveSum(inputArray, k):
+    rlist=[]
+    length=len(inputArray)
+    comb=length-k+1
+    
+    highest=0
+    
+    for i in range(comb):
+        total=0
+        counter=0
+        j=i
+        while counter<k :
+            
+            total+=inputArray[j]
+            j+=1
+            counter+=1
+        if total>=highest:
+            highest=total
+        #rlist.append(total)
+            
+    return highest
+        
+        
+        
+        
+            
+    
+
