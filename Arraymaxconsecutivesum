@@ -20,7 +20,50 @@ def arrayMaxConsecutiveSum(inputArray, k):
             
     return highest
         
+  #new version
+  def arrayMaxConsecutiveSum(inputArray, k):
+    if not(3<=len(inputArray)<=100000):
+        return None
+    rlist=[]
+    length=len(inputArray)
+    comb=length-k+1
+    
+    highest=0
+    i=0
+    counter=0
+    total=0
+    j=0
+    while counter< k and i < comb:
+        if not(1<=inputArray[j]<=1000):
+            return None
+        total+=inputArray[j]
+        #print j,'th element val=',inputArray[j]
+        j+=1
+        if counter==k-1:
+            #print 'value of counter=',counter
+            i+=1
+            j-=k-1
+            counter=0
+            rlist.append(total)
+            #if total>=highest:
+            #    highest=total
+            total=0
+                #rlist.append(total)
+                #print 'after appned',rlist
+        else:
+             counter+=1
+            
+            
+    return max(rlist)
+    #return highest
         
+        
+        
+        
+            
+    
+
+
         
         
             
