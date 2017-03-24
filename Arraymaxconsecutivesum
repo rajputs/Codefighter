@@ -59,7 +59,19 @@ def arrayMaxConsecutiveSum(inputArray, k):
         
         
         
-        
+    ########
+    import itertools
+    def arrayMaxConsecutiveSum(inputArray, k):
+        if not(3<=len(inputArray)<=100000):
+            return None
+    length=len(inputArray)
+    comb=length-k+1
+    highest=0
+    
+    linew=[sum(inputArray[i:i+k]) for i in range(comb) ]
+            
+    
+    return max(linew)
             
     
 
